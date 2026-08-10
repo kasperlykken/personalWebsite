@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title>404 – Siden blev ikke fundet</title>
 
+    <style>
+        html {
+            visibility: hidden;
+        }
+    </style>
+
     <script>
         if (location.pathname.startsWith("/personalWebsite/DnD/Website/")) {
             location.replace("/personalWebsite/DnD/Website/404.html");
+        } else {
+            document.documentElement.style.visibility = "visible";
         }
     </script>
 </head>
