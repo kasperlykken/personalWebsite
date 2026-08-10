@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Samlet hub for projekter og værktøjer.">
+  <title>Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" id="brand" href="./">Hub</a>
+    <nav><a href="#pages">Sider</a><a href="#about">Om</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow" id="eyebrow"></p>
+      <h1 id="title"></h1>
+      <p class="intro" id="tagline"></p>
+    </section>
+
+    <section class="hub" id="pages">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">NAVIGATION</p>
+          <h2>Vælg en side</h2>
+        </div>
+        <input id="search" type="search" placeholder="Søg…" aria-label="Søg i sider">
+      </div>
+
+      <div id="filters" class="filters"></div>
+      <div id="grid" class="grid"></div>
+      <p id="empty" class="empty hidden">Ingen sider matcher.</p>
+    </section>
+
+    <section class="about" id="about">
+      <p class="eyebrow">OM HUBBEN</p>
+      <h2>Én root. Mange grene.</h2>
+      <p>Nye sider tilføjes i <code>pages.js</code>. Du behøver ikke ændre HTML'en.</p>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script src="pages.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
