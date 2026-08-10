@@ -30,7 +30,7 @@ window.HUB_CONFIG = {
     {
       title: "D&D",
       description: "Kampagnesider, handouts, wiki og rollespilsmateriale.",
-      href: "./dnd/website/",
+      href: "./DnD/Website/",
       category: "D&D",
       icon: "D",
       badge: ""
