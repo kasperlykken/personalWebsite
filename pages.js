@@ -4,11 +4,11 @@
   Tilføj en ny side ved at kopiere ét objekt i pages-listen.
 */
 window.HUB_CONFIG = {
-  brand: "KasperLab",
-  eyebrow: "PROJECT HUB",
+  brand: "Lykkes Hjemmeside",
+  eyebrow: "WEBSITE HUB",
   title: "Alt samlet ét sted.",
-  tagline: "Projekter, værktøjer, D&D, MTG og andet, der får sin egen lille gren.",
-  footer: "Bygget som statisk GitHub Pages-site.",
+  tagline: "Projekter, værktøjer, D&D, MTG.",
+  footer: "Der er altså ikke mere at komme efter!",
 
   pages: [
     {
@@ -41,14 +41,6 @@ window.HUB_CONFIG = {
       href: "./tools/",
       category: "Tools",
       icon: "T",
-      badge: ""
-    },
-    {
-      title: "Blog",
-      description: "Noter, projekter og længere indlæg.",
-      href: "./blog/",
-      category: "Blog",
-      icon: "B",
       badge: ""
     }
 
