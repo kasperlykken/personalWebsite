@@ -39,7 +39,7 @@ window.HUB_CONFIG = {
       title: "Tools",
       description: "Små webværktøjer til tekst, Windows, AutoHotkey og andet.",
       href: "./tools/",
-      category: "Tools",
+      category: "MTG",
       icon: "T",
       badge: ""
     }
