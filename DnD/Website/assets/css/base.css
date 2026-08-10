@@ -1,0 +1,244 @@
+/* cosmok base.css — kun vanilla CSS. Mobil først. */
+:root{
+  --bg: #0B132B;
+  --text: #E6F1FF;
+  --text-dim: #c5d6f7;
+  --primary: #FFD54A; /* stjerne-gul */
+  --secondary: #0EA5E9; /* kølig blå */
+  --surface-1: #111a33;
+  --surface-2: #0e1730;
+  --surface-3: #23304f;
+  --shadow-1: 0 8px 20px rgba(0,0,0,.35);
+  --shadow-2: 0 12px 28px rgba(0,0,0,.45);
+  --radius: 18px;
+  --wrap: 1100px;
+}
+
+
+/*Baseline / typografi
+- Sørger for forudsigelig størrelse (padding tælles med).
+- System-font stack for hurtig rendering, ingen eksterne fonts.
+- Standard linkfarve = sekundær blå.*/
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, Segoe UI, Roboto, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a{ color: var(--secondary); }
+a:hover{ text-decoration: underline; }
+
+/*Layout-utility*/
+.wrap{
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+/*Header & navigation*/
+.site-header{
+  position: sticky; top:0; z-index: 30;
+  background: linear-gradient(180deg, rgba(8,12,28,.9), rgba(8,12,28,.6) 60%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.brand{
+  display:flex; align-items:center; gap:.6rem;
+  text-decoration: none; color: var(--text);
+  font-weight: 700;
+}
+.brand .icon{ filter: drop-shadow(0 0 6px rgba(255,213,74,.35)); }
+.brand .wordmark{text-transform: lowercase; letter-spacing:.5px;}
+
+.site-header .wrap{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+}
+.site-nav ul{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-wrap:wrap; gap:.5rem;
+}
+.site-nav a{
+  display:inline-block;
+  padding:.5rem .9rem;
+  border-radius: 999px;
+  border:1px solid var(--surface-3);
+  background: var(--surface-2);
+  text-decoration:none;
+  color: var(--text);
+  font-weight: 600;
+}
+.site-nav a[aria-current="page"]{
+  background: var(--primary);
+  color:#1a1200;
+  border-color: #e6c036;
+}
+.site-nav a:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-1);
+  text-decoration:none;
+}
+
+
+/*Hero (typografi & grund-baggrund)*/
+.hero{
+  text-align:center;
+  padding: 3.5rem 1rem 2rem;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(14,165,233,.12), transparent 60%),
+    radial-gradient(1000px 500px at 50% -30%, rgba(255,213,74,.15), transparent 65%);
+  border-radius: 24px;
+}
+.hero-title{
+  font-size: clamp(2.4rem, 6vw, 4rem);    /*clamp() gør størrelser flydende fra mobil → desktop.*/
+  line-height:1.05; margin:0;
+  letter-spacing:.5px;
+  text-shadow: 0 2px 0 rgba(0,0,0,.25);
+}
+.hero-tag{ margin:.5rem 0 0; font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-dim); }
+
+.page-intro .lede{ color: var(--text-dim); margin-top:.25rem; }
+
+
+/*Cards & grids*/
+.card-grid{
+  margin-block: 1.5rem 2.5rem;
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));    /*Auto-fit gør grid’et responsivt (så mange kolonner som der er plads til).*/
+}
+.card{
+  background: var(--surface-1);
+  border:1px solid var(--surface-3);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  overflow:hidden;
+}
+.card .card-body{ padding: 1rem 1rem 1.25rem; }
+.card-title{ margin: .25rem 0 .35rem; font-size: 1.25rem; }
+.card-text{ margin:0; color: var(--text-dim); }
+.link-card{ position:relative; display:flex; justify-content:space-between; align-items:center; gap:1rem; text-decoration:none; color:inherit; }
+.link-card:hover{ transform: translateY(-2px); box-shadow: var(--shadow-2); }   /*Kort får bløde hjørner, diskret kant og skygger.*/
+.link-card .card-cta{ font-weight:700; margin-right:.5rem; }
+
+/*Lister & formular-detaljer*/
+.details{
+  list-style:none; padding:0; margin:0 0 1rem 0;
+}
+.details li + li{ margin-top:.4rem; }
+
+.checklist{
+  display:flex; gap:1rem; flex-wrap:wrap;
+  border:1px dashed var(--surface-3);
+  padding: .75rem; border-radius: 12px;
+}
+.checklist input{ transform: translateY(1px); }
+
+.btn-row{ display:flex; gap:.6rem; flex-wrap:wrap; }
+
+/*Knapper*/
+.button{
+  display:inline-block; border: none; text-decoration:none; cursor:pointer;
+  padding:.7rem 1rem; border-radius:999px; font-weight: 700;
+  background: var(--primary); color:#1a1200;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.15), 0 6px 16px rgba(0,0,0,.25);
+}
+.button:hover{ transform: translateY(-1px); }
+.button:active{ transform: translateY(0); }
+.button.outline{
+  background: var(--surface-2); color: var(--text);
+  border:1px solid var(--surface-3); box-shadow:none;
+}
+
+/*Billeder*/
+img{ max-width:100%; height:auto; display:block; }
+
+/*Footer*/
+.site-footer{
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: 2rem;
+  color: var(--text-dim);
+}
+.site-footer a{ color: var(--secondary); }
+
+.muted{ color: var(--text-dim); }
+
+/*Tilgængelighed*/
+/* Skip link for tilgængelighed */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;    /* keyboard jump til main */
+}
+.skip-link:focus{
+  position:fixed; left: 1rem; top: 1rem; width:auto; height:auto; padding:.6rem 1rem;
+  background: var(--primary); color:#1a1200; border-radius: 999px; z-index:1000;
+}
+
+/* Fokusmarkeringer */
+:focus-visible{   /* keyboard-fokus style */
+  outline: 3px solid var(--secondary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/*Headings*/
+/* Typografi tweaks */
+h1,h2,h3{ line-height:1.2; }
+h1{ font-size: clamp(1.6rem, 4.5vw, 2.2rem); margin: .5rem 0; }
+h2{ font-size: clamp(1.25rem, 3.5vw, 1.6rem); margin: .25rem 0 .25rem; }
+h3{ font-size: clamp(1.1rem, 3vw, 1.25rem); margin:.2rem 0; }
+
+.section-title{ margin-top: .5rem; }
+
+.updated{ color: var(--text-dim); font-size:.95rem; margin-top: .75rem; }
+
+/* Fremhæv gul k/K i wordmark/hero */
+.wordmark .mark,
+.hero-title .mark{
+  color: var(--primary);           /* #FFD54A */
+  text-shadow: 0 0 8px rgba(255,213,74,.35);
+}
+
+
+/*Hero-baggrund med billede (overlægges ovenpå gradienterne)
+- To hero-blokke er bevidst: den første laver glød, den anden lægger billedlag via ::before og en overlay via ::after.
+- isolation:isolate giver egen stacking-kontekst, så pseudo-elementerne kan ligge bag indholdet uden at “slå igennem”.
+- Sti-vinkel: CSS-filen ligger i assets/css/, billedet i assets/img/ → derfor ../img/....*/
+
+/* Hero cosmok: baggrundsbillede bag titel */
+.hero{
+  position: relative;
+  isolation: isolate;         /* eget stacking context, så ::before kan ligge bag indholdet */
+  overflow: hidden;
+}
+
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/stars-hero-bg-ratio-2-1.jpg") center/cover no-repeat;
+  opacity: .7;               /* justér efter smag */
+  filter: saturate(.9) brightness(.85) contrast(1.05);
+  z-index: -1;
+}
+
+/* let farveglød/overlay for kontrast (kan droppes) */
+.hero::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+/*
+    radial-gradient(1200px 600px at 50% -10%, rgba(14,165,233,.20), transparent 60%),
+    radial-gradient(1000px 500px at 50% -30%, rgba(255,213,74,.18), transparent 65%),
+    linear-gradient(180deg, rgba(11,19,43,.10), rgba(11,19,43,.45) 60%, rgba(11,19,43,.65));
+*/
+    radial-gradient(1200px 600px at 50% -25%, rgba(14,165,233,.10), transparent 50%),
+    radial-gradient(1000px 500px at 50% -35%, rgba(255,213,74,.10), transparent 55%),
+    linear-gradient(180deg, rgba(11,19,43,.08), rgba(11,19,43,.40) 60%, rgba(11,19,43,.60));
+  z-index: -1;
+}

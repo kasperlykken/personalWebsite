@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="595" height="842" viewBox="0 0 595 842">
+  <!-- A4 stående -->
+  <style>
+    .bg{fill:#fff}
+    .ink{fill:#111}
+    .stamp{fill:none;stroke:#111;stroke-width:3;stroke-dasharray:6 6}
+    .mono{font: 16px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    .title{font:700 20px system-ui, Segoe UI, Roboto, Inter, sans-serif}
+  </style>
+  <rect class="bg" width="595" height="842" rx="8"/>
+  <g transform="translate(40,40)" class="ink">
+    <text class="title" x="0" y="0" dy="1em">SALGSKVITTERING — “Kuglen solgt”</text>
+    <text class="mono" x="0" y="56">Køber: Archivarius IX </text>
+    <text class="mono" x="0" y="86">Objekt: Ukendt kugle (ref. #IX-Φ-22)</text>
+    <text class="mono" x="0" y="116">Pris: 110 gp</text>
+    <text class="mono" x="0" y="146">Betingelser: “Ingen spørgsmål under transport.”</text>
+    <rect x="0" y="200" width="515" height="200" class="stamp" rx="10"/>
+    <text class="mono" x="16" y="228">✦ STEMPEL: BETALT</text>
+    <text class="mono" x="0" y="446">Underskrift (køber): __𝓐𝓻𝓬𝓱𝓲𝓿𝓪𝓻𝓲𝓾𝓼 𝓘𝓧__</text>
+    <text class="mono" x="0" y="486">Underskrift (sælger): _____________________</text>
+  </g>
+</svg>

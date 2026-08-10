@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1011" height="637" viewBox="0 0 1011 637">
+  <!-- Kreditkort-format skaleret (85.6x53.98mm * 8) -->
+  <defs>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#FFD54A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1011" height="637" rx="32" fill="url(#shine)"/>
+  <rect x="14" y="14" width="983" height="609" rx="28" fill="none" stroke="#fff" stroke-width="3" opacity="0.6"/>
+  <text x="60" y="110" fill="#fff" font-family="system-ui, Segoe UI, Roboto, Inter, sans-serif" font-size="48" font-weight="700">Más Vegas — VIP</text>
+  <text x="60" y="160" fill="#fff" font-family="system-ui, Segoe UI, Roboto, Inter, sans-serif" font-size="20" opacity="0.9">Adgang til høj-lodder og lav-moral.</text>
+  <text x="60" y="560" fill="#111" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22">ID: MV-✦-0007 • “Held er en ressource.”</text>
+  <circle cx="880" cy="140" r="60" fill="#fff" opacity="0.15"/>
+  <circle cx="920" cy="180" r="18" fill="#fff" opacity="0.5"/>
+</svg>

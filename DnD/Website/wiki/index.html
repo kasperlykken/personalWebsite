@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmopedia — cosmok</title>
+  <meta name="description" content="Opslagsværk for kampagnen: steder, personer, begivenheder. Wikisider kan linke til hinanden." />
+  <meta property="og:title" content="Cosmipedia — cosmok" />
+  <meta property="og:description" content="Wiki med facts, navne og særlige begivenheder i Spelljammer-verdenen." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <style>
+    /* Søg + filtre (chips) */
+    .search { display:flex; gap:.5rem; align-items:center; margin-block:1rem 1rem; }
+    .search input { flex:1; padding:.75rem 1rem; border-radius:999px; border:1px solid var(--surface-3); background:var(--surface-1); color:var(--text); }
+    .filters { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+    .chip { display:inline-flex; align-items:center; gap:.4rem; padding:.45rem .9rem; border-radius:999px; border:1px solid var(--surface-3); background:var(--surface-2); color:var(--text); font-weight:600; cursor:pointer; }
+    .chip[aria-pressed="true"]{ background: var(--primary); color:#1a1200; border-color:#e6c036; }
+    .chip .count{ opacity:.7; font-weight:700; }
+    .wiki article { padding:1rem; border:1px solid var(--surface-3); border-radius:16px; background:var(--surface-1); box-shadow: var(--shadow-1); }
+    .wiki article + article { margin-top:1rem; }
+    .wiki h2 { display:flex; align-items:baseline; gap:.5rem; }
+    .permalink { font-size:.9rem; text-decoration:none; border:1px solid var(--surface-3); padding:.1rem .5rem; border-radius:999px; }
+    .taxonomy { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
+    .tag { font-size:.85rem; padding:.2rem .6rem; border-radius:999px; background:var(--surface-2); border:1px solid var(--surface-3); cursor:pointer; }
+    .muted { color: var(--text-dim); font-size:.95rem; }
+    @media (prefers-reduced-motion:no-preference){
+      .wiki article{ transition: transform .2s ease, opacity .2s ease; }
+      .wiki article[hidden]{ opacity:0; transform: translateY(4px); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Spring til indhold</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="icon" aria-hidden="true">✦</span>
+        <span class="wordmark">cosmo<span class="mark">k</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Global navigation">
+        <ul>
+          <li><a href="../next/">Næste session</a></li>
+          <li><a href="../map/">Kort</a></li>
+          <li><a href="../wiki/" aria-current="page">Cosmopedia</a></li>
+          <li><a href="../crew/">Crew</a></li>
+          <li><a href="../handouts/">Handouts</a></li>
+          <li><a href="../rules/">Husregler</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <main id="main" class="wrap">
+    <header class="page-intro">
+      <h1>Cosmipedia</h1>
+      <div class="search">
+        <label for="q" class="sr-only">Søg i wiki</label>
+        <input id="q" type="search" placeholder="Søg: steder, personer, begivenheder …" aria-describedby="count">
+        <span id="count" class="muted"></span>
+      </div>
+      <div class="filters" id="filters" role="toolbar" aria-label="Filtrer efter tags">
+        <!-- chips tilføjes via JS. En 'Vis alt' chip oprettes altid -->
+      </div>
+    </header>
+
+    <section class="wiki" aria-label="Wikiartikler">
+
+<!-- Wiki artikel skebelon:
+
+      <article id="ID_NAVN">
+        <h2>ARTIKELNAVN 
+          <a class="permalink" href="#ID_NAVN" aria-label="Kopier link til ARRTIKELNAVN">#</a></h2>
+        <p>
+          BRØDTEKST<em>ITALIC</em><q>QUOTATION</q>
+        </p>
+        <p>Se også: <a href="#REFERENCE_ID_NAVN_1">REFERENCE_NAVN_1</a>, 
+                    <a href="#REFERENCE_ID_NAVN_2">REFERENCE_ID_NAVN_2</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">TAG_1</span>
+          <span class="tag">TAG_2</span>
+        </div>
+      </article>
+-->
+      <!-- Artikler nedefor -->
+      <article id="matematiki-maaneby">
+        <h2>Matematiki Måneby 
+          <a class="permalink" href="#matematiki-maaneby" aria-label="Kopier link til Matematiki Måneby">#</a></h2>
+        <p>
+          En halvmåneformet by, hvor gaderne slynger mellem huse og butiksfacader.<br>
+          Lanterner svæver i lav tyngde over kanalerne, og tagene er belagt med sortsten, der glitrer som natten.<br>
+          Byen er kendt som vært for Solarium Tritonus og sine håndvævede solsejl.
+        </p>
+        <p>Se også: <a href="#solarium-tritonus">Solarium Tritonus</a>.</p>
+        <div class="taxonomy">
+          <span class="tag">Lokation</span>
+        </div>
+      </article>
+      
+
+      <article id="solarium-tritonus">
+        <h2>Solarium Tritonus 
+          <a class="permalink" href="#solarium-tritonus" aria-label="Kopier link til Solarium Tritonus">#</a></h2>
+        <p>
+          En ni-dages byfest med tre særlige nætter, hvor himlen synger af lys.<br>
+          Markeder, optog og musik fylder gaderne.<br>
+          <b>Tradition:</b> man tænder tre lanterner for Fortid, Retning og Hjem,<br>
+          og slukker dem i omvendt orden ved afgang.
+        </p>
+        <p>Se også: <a href="#matematiki-maaneby">Matematiki Måneby</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Begivenhed</span>
+        </div>
+      </article>
+
+
+      <article id="spelljamming">
+        <h2>Spelljamming 
+          <a class="permalink" href="#spelljamming" aria-label="Kopier link til Spelljamming">#</a></h2>
+        <p>
+          Det at sejle på Phlogistons strømme fra hjelmen på sin Spelljammer.
+        </p>
+        <p>Se også: <a href="#phlogiston">Phlogiston</a>,
+        <p>Se også: <a href="#spelljammer">Spelljammer</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Mekanik</span>
+          <span class="tag">Viden</span>
+        </div>
+      </article>
+
+
+      <article id="spelljammer">
+        <h2>Spelljammer 
+          <a class="permalink" href="#spelljammer" aria-label="Kopier link til Spelljammer">#</a></h2>
+        <p>
+          Skibe, der sejler i rummet ved hjælp af magi, tanker og et styresæde kaldet en hjelm.<br>
+          En erfaren styrmand “tænker” kursen, mens resten af besætningen håndterer sejl, ballast og små mirakler.<br>
+          <br>
+          - <b>Spelljammer-hjelm:</b> Tankestyret motor. Med operativ stol og brille. <i>Slang:</i> “Hjelmen”.<br>
+          - <b>Sirupsfyr:</b> Stjernesirup-reaktor. Stabil, billig og slidstærk. <i>Slang:</i> “Fyret”.<br>
+          - <b>Graviflux-spole:</b> Skub-motor, der bøjer lokal tyngde. God til manøvrer. <i>Slang:</i> “Spolen”.<br>
+          - <b>Æther-kompressor:</b> Komprimerer og at injicerer AdBlue for ekstra thrust. <i>Slang:</i> “Pusten”.<br>
+          - <b>Fotonkedel:</b> Lysbundne impulser. Giver hurtig optræk, også på koldt fyr. <i>Slang:</i> “Kedlen”.<br>
+          - <b>Voidanker:</b> Det er et anker. <i>Slang:</i> “Ankret”.<br>
+          - <b>Phaseløber:</b> Kortvarig faseforskydning til mikrospring og undvigelser. <i>Slang:</i> “Løberen”.<br>
+          - <b>Chrono-gear:</b> Tidsdæmpende trinværk, udglatter turbulens i rumtid. <i>Slang:</i> “Uret”.
+        </p>
+        <img src="../assets/img/spelljammer-skitse.jpg"/>
+        <p>Se også: <a href="#phlogiston">Phlogiston</a>,
+        <p>Se også: <a href="#spelljamming">Spelljamming</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Mekanik</span>
+          <span class="tag">Viden</span>
+        </div>
+      </article>
+      
+      
+      <article id="rumhval">
+        <h2>Rumhvaler 
+          <a class="permalink" href="#rumhvaler" aria-label="Kopier link til Rumhvaler">#</a></h2>
+        <p>
+          Det største væsen man finder rejsende mellem stjerner.<br>
+          De er fredelige majestætiske skabingner, men nysgerrige.<br>
+          Deres sang kan høres alenvidt og vibrerer i brystkassen. 
+          Skibe dæmper normalt lanternerne og holder kurs, når hvaler passerer.
+        </p>
+        <p>Se også: <a href="#...">...</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Creature</span>
+        </div>
+      </article>
+
+
+      <article id="flimmer-fugl">
+        <h2>Flimmer Fugl
+          <a class="permalink" href="#flimmer-fugl" aria-label="Kopier link til Flimmer Fugl">#</a></h2>
+        <p>
+          Blinker/teleporterer sig frem i luften når de flyver.<br>
+          Det siger “twump, twump”, når en flok flyver forbi.<br>
+          Flimmer Fugle har fire vinger, en mørk hætte, turkisblå øjne.
+        </p>
+        <p>Se også: <a href="#...">...</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Creature</span>
+        </div>
+      </article>
+
+
+      <article id="phlogiston">
+        <h2>Phlogiston
+          <a class="permalink" href="#phlogiston" aria-label="Kopier link til Phlogiston">#</a></h2>
+        <p>
+          Et lysende, farveskiftende “hav” af flygtig æter, som danner lommer og strømme i Wildspace.<br>
+          Phlogiston kan få et skib til at suse afsted, hvis man fanger en strøm rigtigt.<br>
+          CosmoK binder rå phlogiston til Stjernesirup, en stabil brændstofgel.
+        </p>
+        <p>Se også: <a href="#spelljamming">Spelljamming</a>,
+                    <a href="#cosmokiosken">Cosmo Kiosken</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Viden</span>
+          <span class="tag">Lokation</span>
+        </div>
+      </article>
+
+
+      <article id="svanser">
+        <h2>Svanser
+          <a class="permalink" href="#svanser" aria-label="Kopier link til Svanser">#</a></h2>
+        <p>
+          Svane-lignende mellemstore fugle.<br>
+          Den invasive sortsvans er svær at se i det mørke natterum.<br>
+          Knupsvansen er fredet, men smager utroligt godt.
+        </p>
+        <p>Se også: <a href="#...">...</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">creature</span>
+        </div>
+      </article>
+
+
+      <article id="cosmokiosken">
+        <h2>CosmoKiosken
+          <a class="permalink" href="#cosmokiosken" aria-label="Kopier link til CosmoKiosken">#</a></h2>
+        <p>
+          tvFjern's brændstofsfilial CosmoK – Brændstof & Tyggegummi.<br>
+          Her blandes den søde lugt af friture med ozon fra Stjernesirupspumperne.<br>
+          Standard- og premium-påfyldning, O₂-service og nul-G vask klares ved servicedokken.<br>
+          Ved disken sælges CosmoKaffe, CosmoGum og CosmoNNER til de lange vagter.
+        </p>
+        <p>Se også: <a href="#...">...</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Handel</span>
+        </div>
+      </article>
+
+
+      <article id="den-post-moduse-tidsregning">
+        <h2>Den Post-Moduse Tidsregning
+          <a class="permalink" href="#den-post-moduse-tidsregning" aria-label="Kopier link til Den Post-Moduse Tidsregning">#</a></h2>
+        <p>
+          Et fælles kalendersystem, indført “efter Modus-reformen” af tvFjern, så skibe og byer kan tale samme tid.<br>
+          <br>
+            <b>Kalendersystem:</b><br>
+            0,1 Lysår (Lår) = 1 Stjerneår (Står) = 10 Meteoder (Met) = 30 Univaller (Ulr) = 300 Standard Rotationer (StdR)<br>
+            Note: <i>Hvert 3,14 Stjerneår er det Solår.</i> Solår (Slår) = 303 StdR.<br>
+            <br>
+            <b>En Standard Rotation:</b><br>
+            Én StdR = 25 timer = 1.500 min = 90.000 sek<br>
+            <br>
+            <b>Hurtige tommelfingre:</b><br>
+            1 Lår  =  3000 StdR.<br>
+            1 Står =  300 StdR.<br>
+            1 Met  =  30 StdR.<br>
+            1 Ulr  =  10 StdR.<br>
+            Note: <i>For ca. 20 Lår siden lagde man +1 time til en StdR “for at nå lidt mere på en rotation”.<br>
+            Derfor er ældre krøniker én time “skæve”.</i><br>
+            <br>
+            <b>Ordinal form:</b>
+            PM[Lår].[Står]-[StdR]T[HH:MM[:SS]]<br>  ─ StdR = dagnummer i året (1–300, eller 1–303 i et Solår).
+        </p>
+        <p>Se også: <a href="#alen-systemet">Alen-systemet</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Viden</span>
+        </div>
+      </article>
+
+
+      <article id="alen-systemet">
+        <h2>Alen-systemet
+          <a class="permalink" href="#alen-systemet" aria-label="Kopier link til Alen-systemet">#</a></h2>
+        <p>
+          Standardiseret målesystem.<br>
+          <br>
+          <b>Enheder:</b><br>
+          0,1 nebulalen (na) = 1 alen (a) = 10 densialen (da) = 100 cosmoalen (ca) = 1000 månealen (ma)<br>
+          Note: <i>(1 fod (ft) = 0,3 alen)</i>
+        </p>
+        <p>Se også: <a href="#den-post-moduse-tidsregning">Den Post-Moduse Tidsregning</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Viden</span>
+        </div>
+      </article>
+
+
+      <article id="pistol">
+        <h2>Pistol
+          <a class="permalink" href="#pistol" aria-label="Kopier link til Pistol">#</a></h2>
+        <p>
+          <b>Type:</b> Martial Ranged Weapon<br>
+          <b>Værdi:</b> 250 GP<br>
+          <b>Damage:</b> 1d10 Piercing<br>
+          <b>Range:</b> 30/90<br>
+          <br>
+          <b>Mastery Property</b><br>
+          <i>Vex:</i> Hvis du rammer et creature med dette våben og giver den skade, har du Advantage på dit næste attack mod den skabning inden slutningen af din næste tur.
+        </p>
+        <p>Se også: <a href="#...">...</a>.
+        </p>
+        <div class="taxonomy">
+          <span class="tag">Skydevåben</span>
+          <span class="tag">Våben</span>
+          <span class="tag">Combat</span>
+        </div>
+      </article>
+
+
+
+    </section>
+  </main>
+
+
+
+    <!-- Footer nederst på siden -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© cosmok — Spelljammerkampagne. <em>‘Stjernesirup til pumperne. CosmoGum til gummerne.’</em></p>
+    </div>
+  </footer>
+
+
+    <!--Søgefelt, "tag"-filter og "Se også" funktionalitet -->
+<script>
+  // --- Hjælpere ---
+  const byId = (id)=>document.getElementById(id);
+  const norm = s => (s||"").trim().toLowerCase();
+
+  // Synonymer/kanoniske chips (du kan udvide listen)
+  const ALIASES = {
+    "npc": ["npc","person","figur"],
+    "creature": ["creature","dyr","væsen"],
+    "lokation": ["lokation","sted","location"],
+    "begivenhed": ["begivenhed","event","hændelse"],
+    "mekanik": ["mekanik","system"],
+    "handel": ["handel","butik","kiosk"],
+    "viden": ["viden","lore","info"],
+    "combat": ["combat","damage","weapon"]
+  };
+
+  // --- Opsamling af artikler og tags ---
+  const input   = byId('q');
+  const count   = byId('count');
+  const filters = byId('filters');
+  const articles = Array.from(document.querySelectorAll('.wiki article'));
+
+  // Gem tags på elementerne i lowercase
+  articles.forEach(a=>{
+    const tags = Array.from(a.querySelectorAll('.tag')).map(t => norm(t.textContent));
+    a.dataset.tags = tags.join(',');
+  });
+
+  // Find tags der faktisk findes
+  const presentTags = new Set(articles.flatMap(a => a.dataset.tags ? a.dataset.tags.split(',') : []));
+
+  // --- Byg filter-chips ---
+  function makeChip(label, pressed=false){
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'chip';
+    btn.dataset.key = label; // kanonisk nøgle
+    btn.dataset.tags = (ALIASES[label]||[label]).join(',');
+    btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    btn.innerHTML = `${label[0].toUpperCase()+label.slice(1)} <span class="count" aria-hidden="true"></span>`;
+    return btn;
+  }
+
+  // "Vis alt"
+  const chipAll = document.createElement('button');
+  chipAll.type='button';
+  chipAll.className='chip';
+  chipAll.dataset.key='__all';
+  chipAll.setAttribute('aria-pressed','true');
+  chipAll.textContent='Vis alt';
+  filters.appendChild(chipAll);
+
+  // Rækkefølge for chips
+  const preferred = ["npc","creature","lokation","begivenhed","mekanik","handel","viden","combat"];
+  const extras = Array.from(presentTags).filter(t => !preferred.includes(t));
+  const order = [...preferred, ...extras];
+  order.forEach(key => filters.appendChild(makeChip(key,false)));
+
+  // --- State & filterlogik ---
+  const state = { query: '', selected: new Set() };
+
+  function selectedExpanded(){
+    const out = new Set();
+    for (const k of state.selected){
+      const list = ALIASES[k] || [k];
+      list.forEach(t=>out.add(norm(t)));
+    }
+    return out;
+  }
+
+  function applyFilter(){
+    const q = state.query;
+    const tagSet = selectedExpanded();
+    let visible = 0;
+
+    articles.forEach(a=>{
+      const textHit = q ? a.textContent.toLowerCase().includes(q) : true;
+      const tags = a.dataset.tags ? a.dataset.tags.split(',') : [];
+      const tagHit = tagSet.size === 0 ? true : tags.some(t => tagSet.has(norm(t)));
+      const show = textHit && tagHit;
+      a.hidden = !show;
+      if (show) visible++;
+    });
+
+    count.textContent = (q || state.selected.size) ? `${visible} resultat(er)` : '';
+
+    // Opdater chip-counts
+    Array.from(filters.querySelectorAll('.chip')).forEach(ch=>{
+      if (ch.dataset.key === '__all') return;
+      const tlist = ch.dataset.tags ? ch.dataset.tags.split(',').map(norm) : [];
+      const c = articles.filter(a=>{
+        const tags = a.dataset.tags ? a.dataset.tags.split(',') : [];
+        return tags.some(t=>tlist.includes(norm(t)));
+      }).length;
+      const span = ch.querySelector('.count');
+      if (span) span.textContent = c ? `(${c})` : '';
+    });
+
+    // Hash for tagvalg
+    const sel = Array.from(state.selected);
+    const hash = sel.length ? `#tag=${encodeURIComponent(sel.join(','))}` : '';
+    if (location.hash !== hash){
+      history.replaceState(null,'',hash || ' ');
+    }
+
+    chipAll.setAttribute('aria-pressed', state.selected.size ? 'false' : 'true');
+  }
+
+  // --- Events ---
+  // Søg
+  input.addEventListener('input', e=>{
+    state.query = e.target.value.trim().toLowerCase();
+    applyFilter();
+  });
+
+  // Klik på chips
+  filters.addEventListener('click', e=>{
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    const key = btn.dataset.key;
+    if (key === '__all'){
+      state.selected.clear();
+      filters.querySelectorAll('.chip').forEach(c=>{
+        if (c.dataset.key !== '__all') c.setAttribute('aria-pressed','false');
+      });
+    } else {
+      const pressed = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+      if (pressed) state.selected.delete(key); else state.selected.add(key);
+      chipAll.setAttribute('aria-pressed', state.selected.size ? 'false' : 'true');
+    }
+    applyFilter();
+  });
+
+  // Klik på tag inde i artikel → filtrér på det tag (solo)
+  document.addEventListener('click', e=>{
+    const t = e.target.closest('.tag');
+    if (!t) return;
+    const raw = norm(t.textContent);
+    // Find kanonisk nøgle der dækker tagget, ellers brug tagget selv
+    let targetKey = Object.entries(ALIASES).find(([,list])=>list.map(norm).includes(raw))?.[0] || raw;
+    state.selected.clear();
+    state.selected.add(targetKey);
+    // Opdatér aria-pressed visuelt
+    filters.querySelectorAll('.chip').forEach(c=>{
+      if (c.dataset.key === '__all') { c.setAttribute('aria-pressed','false'); return; }
+      c.setAttribute('aria-pressed', c.dataset.key === targetKey ? 'true' : 'false');
+    });
+    // ryd søgetekst (så det ikke skjuler resultater)
+    state.query = '';
+    input.value = '';
+    applyFilter();
+  });
+
+  // Hjælp: hvis man klikker et "Se også"-link til en artikel der er SKJULT af et filter,
+  // så ryd filtre/søgning og scroll pænt til artiklen.
+  function revealArticle(id){
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.hidden || state.selected.size || state.query){
+      state.selected.clear();
+      state.query = '';
+      input.value = '';
+      // nulstil chips
+      filters.querySelectorAll('.chip').forEach(c=>{
+        c.setAttribute('aria-pressed', c.dataset.key === '__all' ? 'true' : 'false');
+      });
+      applyFilter();
+    }
+    // Scroll/fokus
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+    el.setAttribute('tabindex','-1');
+    el.focus({preventScroll:true});
+    setTimeout(()=>el.removeAttribute('tabindex'), 500);
+  }
+
+  // Intercept ankerklik, men kun hvis mål er skjult
+  document.addEventListener('click', e=>{
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return; // fx href="#..." placeholders
+    if (target.hidden || state.selected.size || state.query){
+      e.preventDefault();
+      revealArticle(id);
+    }
+  });
+
+  // Hash-init: #tag=... aktiverer filtre, alt andet (#artikel-id) afslører artiklen
+  function initFromHash(){
+    let h = decodeURIComponent(location.hash || '').replace(/^#/, '');
+    if (!h) return applyFilter();
+    if (h.startsWith('tag=')){
+      h = h.slice(4);
+      const parts = h.split(',').map(norm).filter(Boolean);
+      state.selected.clear();
+      parts.forEach(p=> state.selected.add(p));
+      // Markér chips
+      filters.querySelectorAll('.chip').forEach(c=>{
+        if (c.dataset.key === '__all'){ c.setAttribute('aria-pressed', state.selected.size ? 'false':'true'); return; }
+        c.setAttribute('aria-pressed', state.selected.has(c.dataset.key) ? 'true':'false');
+      });
+      state.query = '';
+      input.value = '';
+      applyFilter();
+    } else {
+      // Behandl som artikel-id
+      revealArticle(h);
+    }
+  }
+
+  window.addEventListener('hashchange', initFromHash);
+  // Første kørsel
+  initFromHash();
+</script>
+
+
+
+
+</body>
+</html>

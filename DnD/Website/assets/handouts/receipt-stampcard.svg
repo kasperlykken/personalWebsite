@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="842" height="595" viewBox="0 0 842 595">
+  <!-- A5 liggende (printvenlig). Kvittering + stempelkort side om side -->
+  <style>
+    .bg{fill:#fff}
+    .ink{fill:#111}
+    .muted{fill:#666}
+    .brand{fill:#111;font:700 28px system-ui, Segoe UI, Roboto, Inter, sans-serif}
+    .mono{font: 14px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    .title{font: 700 18px system-ui, Segoe UI, Roboto, Inter, sans-serif}
+    .stamp{fill:none;stroke:#111;stroke-width:2}
+  </style>
+  <rect class="bg" width="842" height="595" rx="16" />
+  <!-- Kvittering -->
+  <g transform="translate(24,24)">
+    <text class="brand" x="0" y="24">cosmok ✦</text>
+    <text class="mono muted" x="0" y="48">KVITTERING #C-0X72 • KfEaU_dokk1</text>
+    <text class="title" x="0" y="78">Vare</text>
+    <text class="title" x="340" y="78">Antal</text>
+    <text class="title" x="420" y="78">Pris</text>
+    <line x1="0" y1="88" x2="480" y2="88" stroke="#111" stroke-width="1"/>
+    <text class="mono" x="0" y="112">Tyggegummi, stjernekrydder</text>
+    <text class="mono" x="340" y="112">2</text>
+    <text class="mono" x="420" y="112">8 cr</text>
+    <text class="mono" x="0" y="136">Brændstof-kredit</text>
+    <text class="mono" x="340" y="136">1</text>
+    <text class="mono" x="420" y="136">—</text>
+    <line x1="0" y1="150" x2="480" y2="150" stroke="#111" stroke-width="1"/>
+    <text class="mono" x="0" y="176">TOTAL</text>
+    <text class="mono" x="420" y="176">8 cr</text>
+    <text class="mono muted" x="0" y="206">“Stjernesirup til pumperne. CosmoGum til gummerne.”</text>
+    <rect x="510" y="0" width="284" height="220" rx="12" fill="#f7f7f7" stroke="#111"/>
+    <text class="title" x="522" y="26">Stempel</text>
+    <text class="mono muted" x="522" y="48">10 = gratis tyggegummi</text>
+    <!-- 10 stempler -->
+    <g transform="translate(522,62)">
+      <g fill="none" stroke="#111" stroke-width="2">
+        <rect x="0" y="0" width="40" height="40" rx="6"/>
+        <rect x="50" y="0" width="40" height="40" rx="6"/>
+        <rect x="100" y="0" width="40" height="40" rx="6"/>
+        <rect x="150" y="0" width="40" height="40" rx="6"/>
+        <rect x="200" y="0" width="40" height="40" rx="6"/>
+        <rect x="0" y="50" width="40" height="40" rx="6"/>
+        <rect x="50" y="50" width="40" height="40" rx="6"/>
+        <rect x="100" y="50" width="40" height="40" rx="6"/>
+        <rect x="150" y="50" width="40" height="40" rx="6"/>
+        <rect x="200" y="50" width="40" height="40" rx="6"/>
+      </g>
+      <text x="20" y="28" text-anchor="middle" class="mono">✦</text>
+      <text x="70" y="28" text-anchor="middle" class="mono">✦</text>
+    </g>
+  </g>
+</svg>

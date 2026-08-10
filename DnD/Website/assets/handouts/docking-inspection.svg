@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="595" height="842" viewBox="0 0 595 842">
+  <style>
+    .bg{fill:#fff}
+    .ink{fill:#111}
+    .title{font:700 22px system-ui, Segoe UI, Roboto, Inter, sans-serif}
+    .mono{font: 16px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    .box{fill:none;stroke:#111;stroke-width:2}
+  </style>
+  <rect class="bg" width="595" height="842" rx="8"/>
+  <g transform="translate(40,40)" class="ink">
+    <text class="title" x="0" y="0" dy="1em">DOCKING-INSPEKTION — Karen</text>
+    <text class="mono" x="0" y="64">Skib: ______________________  ID: _____________</text>
+    <text class="mono" x="0" y="94">Dato: _________  Tid: ________  Port: _________</text>
+
+    <g transform="translate(0,130)">
+      <text class="mono" x="0" y="0" dy="1em">Tjekliste:</text>
+      <g class="mono">
+        <text x="0" y="36">[ ] Transponder aktiv</text>
+        <text x="0" y="66">[ ] Brændstof under 70%</text>
+        <text x="0" y="96">[ ] Last manifest uploadet</text>
+        <text x="0" y="126">[ ] Ingen plasma ved pumperne</text>
+      </g>
+      <rect class="box" x="0" y="160" width="515" height="180" rx="8"/>
+      <text class="mono" x="10" y="186">Bemærkninger:</text>
+    </g>
+  </g>
+</svg>
