@@ -22,7 +22,7 @@ window.HUB_CONFIG = {
     {
       title: "MTG Oracle Exporter",
       description: "Eksportér Oracle-tekst fra en deckliste direkte i browseren.",
-      href: "./mtg/oracle/",
+      href: "./MTG/Tools/Oracle/",
       category: "MTG",
       icon: "O",
       badge: "Ny"
