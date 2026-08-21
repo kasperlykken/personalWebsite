@@ -22,7 +22,7 @@ window.HUB_CONFIG = {
     {
       title: "MTG Oracle Exporter",
       description: "Eksportér Oracle-tekst fra en deckliste direkte i browseren.",
-      href: "./MTG/Tools/Oracle/",
+      href: "./mtg/tools/oracle/",
       category: "MTG",
       icon: "O",
       badge: "Ny"
@@ -30,7 +30,7 @@ window.HUB_CONFIG = {
     {
       title: "D&D",
       description: "Kampagnesider, handouts, wiki og rollespilsmateriale.",
-      href: "./DnD/Website/",
+      href: "./dnd/website/",
       category: "D&D",
       icon: "D",
       badge: ""
