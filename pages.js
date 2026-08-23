@@ -43,6 +43,14 @@ window.HUB_CONFIG = {
       icon: "T",
       badge: ""
     }
+    ,{
+      title: "Familien Lykke",
+      description: "Familie, billeder og bibelvers.",
+      href: "./familienlykke/",
+      category: "Familie",
+      icon: "F",
+      badge: "Ny"
+    }
 
     /*
     NY SIDE - EKSEMPEL:
