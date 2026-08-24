@@ -43,3 +43,9 @@ Når objektet er tilføjet, dukker kortet automatisk op på hubben.
 
 Cloudflare:
 https://dash.cloudflare.com/1172514ace9255dbf57db5e5e019001c/workers/services/view/familienlykke-api/production
+
+lykkessmed.dk:
+https://lykkessmed.dk/
+
+Familiesiden:
+https://familien.lykkessmed.dk/
