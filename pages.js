@@ -12,38 +12,6 @@ window.HUB_CONFIG = {
 
   pages: [
     {
-      title: "MTG",
-      description: "Magic: The Gathering-værktøjer og deckbuilding.",
-      href: "./mtg/",
-      category: "MTG",
-      icon: "M",
-      badge: ""
-    },
-    {
-      title: "MTG Oracle Exporter",
-      description: "Eksportér Oracle-tekst fra en deckliste direkte i browseren.",
-      href: "./mtg/tools/oracle/",
-      category: "MTG",
-      icon: "O",
-      badge: "Ny"
-    },
-    {
-      title: "D&D",
-      description: "Kampagnesider, handouts, wiki og rollespilsmateriale.",
-      href: "./dnd/website/",
-      category: "D&D",
-      icon: "D",
-      badge: ""
-    },
-    {
-      title: "Tools",
-      description: "Små webværktøjer til tekst, Windows, AutoHotkey og andet.",
-      href: "./tools/",
-      category: "MTG",
-      icon: "T",
-      badge: ""
-    }
-    ,{
       title: "Familien Lykke",
       description: "Familie, billeder og bibelvers.",
       href: "./familienlykke/",
@@ -51,6 +19,39 @@ window.HUB_CONFIG = {
       icon: "F",
       badge: "Ny"
     }
+    ,{
+      title: "D&D",
+      description: "Kampagnesider, handouts, wiki og rollespilsmateriale.",
+      href: "./dnd/website/",
+      category: "D&D",
+      icon: "D",
+      badge: ""
+    }
+    ,{
+      title: "MTG Oracle Exporter",
+      description: "Eksportér Oracle-tekst fra en deckliste direkte i browseren.",
+      href: "./mtg/tools/oracle/",
+      category: "MTG",
+      icon: "O",
+      badge: "Ny"
+    }
+    ,{
+      title: "MTG",
+      description: "Magic: The Gathering-værktøjer og deckbuilding.",
+      href: "./mtg/",
+      category: "MTG",
+      icon: "M",
+      badge: ""
+    }
+    ,{
+      title: "Tools",
+      description: "Små webværktøjer til tekst, Windows, AutoHotkey og andet.",
+      href: "./tools/",
+      category: "MTG",
+      icon: "T",
+      badge: ""
+    }
+
 
     /*
     NY SIDE - EKSEMPEL:
